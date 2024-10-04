@@ -1,0 +1,114 @@
+
+
+ESTRUCTURA
+
+https://www.youtube.com/watch?v=lV7mxivGX_I&t=304s  ---- 1:00:20
+
+
+
+1. creacion facil 
+PS C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_company> npm init -y
+- el name del proyecto sera el de la carpeta
+
+
+2. dependencias
+
+helmet : para confidencialidad , en caso te olvides de valida algo lo completa
+express : framewrok
+bcryptjs: encriptar pass 
+cors : nucleos para usar solicitudes de puertos diferentes
+dotenv : variables de entorno
+jsonwebtoken : token 
+mongoose : ORM bd mongoose
+morgan : info del rest
+PS C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_company> npm i express bcryptjs cors dotenv jsonwebtoken mongoose morgan helmet
+
+babel : obtener las ultimas caracteristicas de js y convertirlo o sea compatible en browser en navegadores posteriores 
+Babel es una cadena de herramientas que se utiliza principalmente para convertir código ECMAScript 2015+ en una versión de JavaScript compatible con versiones anteriores en navegadores o entornos actuales y antiguos. Estas son las principales cosas que Babel puede hacer por usted:
+babel es parecido a .ts
+
+https://babeljs.io/docs/ (documentacion)
+@babel/core : trabaja con los nucleos
+@babel/cli : para la terminal
+@babel/node : para que trabaje con node
+nodemon : cambios auto para mapear
+
+PS C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_company> npm i @babel/core @babel/cli @babel/node @babel/preset-env nodemon -D
+
+
+
+
+
+3. 
+
+  estructura proyecto 
+    folder o file q no veas debe crearse 
+   > src    --crear
+     > controllers 
+        products.controller.js 
+     >libs 
+     >middlewares 
+     >models 
+        products.js 
+        Role.js 
+        User.js 
+     > routes 
+        auth.routes.js 
+        products.routers.js 
+        user.routers.js      
+      index.js
+      app.js 
+      config.js 
+      database.js 
+
+  .babelrc ----fuera del source crear   
+
+
+4. configurando babel 
+    .babelrc   > crea un file 
+       este file indica q preset estamos usando o utilizando que es lo que va traducir babel
+
+
+5. creacion de comandos personalizados  en packege.json 
+  
+  babel-node :es una herramienta proporcionada por Babel que te permite ejecutar archivos JavaScript modernos (con características ES6+) directamente, sin tener que transpilar el código de antemano.Es muy útil en entornos de desarrollo, ya que te permite usar características modernas de JavaScript (como import/export, async/await, etc.) sin preocuparte por la compatibilidad con Node.js o la necesidad de un paso de compilación.
+
+--- esto es solo un ejemplo no poner 
+  "scripts": {
+    "start": "babel-node src/index.js"   --- para ejecutar el servidor
+  },
+
+   --- usamos esto
+   > lo cambiamos por este 
+   nodemon : mapea los cambios
+   --exec babel-node : ejecuta codigo js moderno sin trasnpilar , codigo .js moderno para compatilibilidad de .js anteriores
+   en el dev es para entorno de desarollo y el start es para produccion se usa con node pq se ejecuta 1 vez
+
+   "scripts": {
+    "dev": "nodemon src/index.js --exec babel-node"
+  },
+
+  -- comando para contruir
+  "scripts": {
+    "build":"babel src --out-dir build",   ---- contruye codgio de js moderno a js antiguo y compatible , crea el build dist y eso 
+                                                solo se ejecuta esto
+    "dev": "nodemon src/index.js --exec babel-node",
+    "start": "node src/index.js"  ---ejecuta entorno de produccion
+  },
+
+  > comandos para levantar server en entorno de desarollo , esto usamos para levantar ya no es nesecario transpilar
+     npm run dev
+
+  >  comando pa contruir de js moderno a js antiguo
+    npm run build   
+
+
+ 6. 
+  creacion de folders en el cmd + practico
+  controllers : metodos rest
+  libs : librerias
+  middlewares : metodos para los middlewares , validators .etc interceptan algo asi
+  models : clase guias
+  routes : relacionan los metodos rest
+
+C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_company\src>mkdir controllers libs middlewares models routes      

@@ -1,0 +1,9 @@
+
+// este codigo es para usar el js + actual y , que sea compatible con las versiones antiguas .js en los browsers
+// Este código que compartiste es un archivo de configuración de Babel (normalmente llamado .babelrc o babel.config.json), que se utiliza para especificar los presets y plugins que Babel usará para transpilar tu código.
+
+{
+    "presets": [
+        "@babel/preset-env"
+    ]
+}
