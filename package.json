@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build":"babel src --out-dir build",
+    "build": "babel src --out-dir build",
     "dev": "nodemon src/index.js --exec babel-node",
     "start": "node src/index.js"
   },
@@ -26,6 +26,8 @@
     "@babel/core": "^7.25.2",
     "@babel/node": "^7.25.0",
     "@babel/preset-env": "^7.25.4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.7",
     "nodemon": "^3.1.7"
   }
 }

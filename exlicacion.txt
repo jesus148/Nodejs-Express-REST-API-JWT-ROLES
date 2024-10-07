@@ -2,7 +2,7 @@
 
 ESTRUCTURA
 
-https://www.youtube.com/watch?v=lV7mxivGX_I&t=304s  ---- 1:00:20
+https://www.youtube.com/watch?v=lV7mxivGX_I&t=304s  ---- 1:36:34
 
 
 
@@ -35,9 +35,11 @@ nodemon : cambios auto para mapear
 
 PS C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_company> npm i @babel/core @babel/cli @babel/node @babel/preset-env nodemon -D
 
+para la encriptacion de password
+PS C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_company> npm i --save-dev @types/bcryptjs
 
-
-
+para los token
+PS C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_company> npm i --save-dev @types/jsonwebtoken
 
 3. 
 
@@ -112,3 +114,13 @@ PS C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_compa
   routes : relacionan los metodos rest
 
 C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_company\src>mkdir controllers libs middlewares models routes      
+
+
+
+
+7. 
+ comandos para la bd mongo basicos :
+ show dbs   -- muestra las bd
+ use companydb  --- usa 1 bd 
+ show collections  --- muestra las colleciones o tablas 
+ db.roles.find  --- encuentra o lista la data de una coleccion
