@@ -6,6 +6,7 @@ import {  Router} from 'express';
 
 // imporamops todos los metodos del controller
 import * as productoAll from '../controllers/products.controller';
+import {verifyToken} from '../middlewares';
 
 const router = Router()
 
@@ -22,6 +23,7 @@ router.get('/' , productoAll.getProducts)
 // post crear productos
 // http://localhost:4000/products   --post
 // headers> content-type : application/json
+//   x-acces-token > poner el token 
 // application/json : le dice al server q el request sera json 
 // {
 //     "name":"laptop lenovo",
@@ -29,7 +31,7 @@ router.get('/' , productoAll.getProducts)
 //     "price":999.99,
 //     "imgUrl":"https://imageio.forbes.com/specials-images/imageserve/65ab8d96ee06c40dad0e2cc9/Real-Madrid-has-registered-a-new-defender-ahead-of-its-La-Liga-debut-against/960x0.jpg?format=jpg&width=1440"
 // }
-router.post('/' , productoAll.createProducs)
+router.post('/' , verifyToken ,productoAll.createProducs)
 
 
 

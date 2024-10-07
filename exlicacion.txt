@@ -124,3 +124,12 @@ C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_company\
  use companydb  --- usa 1 bd 
  show collections  --- muestra las colleciones o tablas 
  db.roles.find  --- encuentra o lista la data de una coleccion
+
+
+
+ 8. 
+   > base de datos nosql mongo
+   >  al ejeuctar el comando 
+         npm run dev
+     se creara la bd auto 
+  > ojo : si sale error solo instalar babel.    
