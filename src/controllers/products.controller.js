@@ -54,6 +54,7 @@ export const updateProductBy = async(req , res )=>{
     // encuentra y actualiza
     // req.params.productId : 1 parametro , primero busca , el productId = en el router 
     // req.body : luego actualiza
+    // puedes actualizar todo o solo ciertos campos
     // {new:true}: es para obtener el producto actualizado y se agrega en la constante productUpdate
     const productUpdate = await Product.findByIdAndUpdate(req.params.productId , req.body,{
         new: true
@@ -73,8 +74,12 @@ export const deleteProductById = async(req , res )=>{
     // desestructurando , obteniendo el parametro 
     const {productId}= req.params;
 
+
+
     await Product.findByIdAndDelete(productId);
 
-    res.status(200).json();
+    res.status(200).json({
+        msg :`producto ${productId} eliminado`
+    });
 
 }

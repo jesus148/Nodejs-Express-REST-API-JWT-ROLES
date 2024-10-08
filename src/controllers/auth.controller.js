@@ -19,6 +19,7 @@ export  const singUp = async (req , res)=>{
     const newUser = new User({
         username,
         email,
+        // ecncryptPassword : metodo en la clase guia lo encripta
         password: await User.ecncryptPassword(password)
     })
 
@@ -42,12 +43,13 @@ export  const singUp = async (req , res)=>{
     }
 
 
-    // registrando 
+    // registrando
+    // savedUser se guarda todo el objeto registrado
     const savedUser = await newUser.save();
     console.log(savedUser);
 
     //creando el token 
-    // {id:savedUser._id} : se guarda el id
+    // {id:savedUser._id} : se guarda el id , seria la cabecera o el payload
     // config.SECRET : la firma del token
    const token = jwt.sign({id:savedUser._id} , config.SECRET, {
         expiresIn:86400//1 dia - 24 horas
@@ -59,6 +61,8 @@ export  const singUp = async (req , res)=>{
     // return vista
     res.status(200).json({token})
 }
+
+
 
 
 
@@ -89,13 +93,14 @@ export  const signini = async (req , res)=>{
 
 
     //creando el token 
-    // {id:savedUser._id} : se guarda el id
+    // {id:savedUser._id} : se guarda el id ,  seria la cabecera o el payload
     // config.SECRET : la firma del token
     const token = jwt.sign({id: user._id} , config.SECRET, {
         expiresIn:86400//1 dia - 24 horas
     })
 
     
+    // enviando el token a la vista
     res.json({token})
 
 

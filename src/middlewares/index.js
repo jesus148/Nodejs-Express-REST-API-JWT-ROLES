@@ -2,8 +2,13 @@
 
 // este js exportara los los files de midleware authjwt.js y el verifySignup.js
 
-import {verifyToken} from "./authjwt";
 
 
-// exportando
-export {verifyToken}
+// importnaod de manera individual
+// import {verifyToken} from "./authjwt";
+// // exportando
+// export {verifyToken}
+
+// exportando todo 
+import * as authjwt from "./authjwt";
+export {authjwt }

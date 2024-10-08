@@ -6,9 +6,17 @@ import {  Router} from 'express';
 
 // imporamops todos los metodos del controller
 import * as productoAll from '../controllers/products.controller';
-import {verifyToken} from '../middlewares';
+import {authjwt} from '../middlewares';
+import middlewareWrapper from 'cors';
 
 const router = Router()
+
+
+// ojo: recordar cada rest tiene un middleware dependiendo de su criterio y nivel , si es crear solo el user y moderador 
+// , para los get cualquier rol y si es put o delete un rango mas alto solo el admin
+
+
+
 
 
 // obtener todo
@@ -31,7 +39,8 @@ router.get('/' , productoAll.getProducts)
 //     "price":999.99,
 //     "imgUrl":"https://imageio.forbes.com/specials-images/imageserve/65ab8d96ee06c40dad0e2cc9/Real-Madrid-has-registered-a-new-defender-ahead-of-its-La-Liga-debut-against/960x0.jpg?format=jpg&width=1440"
 // }
-router.post('/' , verifyToken ,productoAll.createProducs)
+// [authjwt.verifyToken , authjwt.isModerator]  : son 2 middlewareWares
+router.post('/' , [authjwt.verifyToken , authjwt.isModerator] ,productoAll.createProducs)
 
 
 
@@ -50,14 +59,19 @@ router.get('/:productId' , productoAll.getProductsById)
 // {
 //     "name": "celular 2024"
 // } --- data a actualizar puedes poner todo o solo ciertos campos a actualizar 
-router.put('/:productId' , productoAll.updateProductBy)
+// headers>
+//   x-acces-token > poner el token 
+// [authjwt.verifyToken , authjwt.isAdmin] : son midlewares
+router.put('/:productId' ,[authjwt.verifyToken , authjwt.isAdmin],productoAll.updateProductBy)
 
 
 
 
 // http://localhost:4000/products/66ff355dd5f2d015e4c7f0f5 ---- delete
-// delet x id
-router.delete('/:productId' , productoAll.deleteProductById)
+// // headers>
+//   x-acces-token > poner el token 
+// [authjwt.verifyToken , authjwt.isAdmin] : son midlewares
+router.delete('/:productId' ,  [authjwt.verifyToken , authjwt.isAdmin],productoAll.deleteProductById)
 
 
 // exportando

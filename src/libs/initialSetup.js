@@ -1,8 +1,10 @@
 
 import Role from '../models/Role';
 
-// este metodo se ejecuta automatico
+// este metodo se ejecuta automatico al inicar la app 
 
+
+// para crear los roles de los usuario
 export const createRoles = async()=>{
 // ok
 try{ 
