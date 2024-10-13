@@ -11,7 +11,9 @@ import Role from '../models/Role';
 // metodo registrarse
 export  const singUp = async (req , res)=>{
 
-    // destructurando el request
+    // todo ok
+    try {
+        // destructurando el request
     const {username, email, password , roles}= req.body;
 
 
@@ -60,6 +62,11 @@ export  const singUp = async (req , res)=>{
 
     // return vista
     res.status(200).json({token})
+
+    // error
+    } catch (error) {
+        return res.status(500).json(error.message)
+    }
 }
 
 
@@ -75,7 +82,9 @@ export  const singUp = async (req , res)=>{
 // metodo ingresar
 export  const signini = async (req , res)=>{
 
-    // busca el objeto por el email del request
+    // todo ok
+    try {
+         // busca el objeto por el email del request
     // populate("roles") : trae todo el array de roles de ese usuario encontrado
     const user = await User.findOne({email : req.body.email}).populate("roles");
 
@@ -103,6 +112,10 @@ export  const signini = async (req , res)=>{
     // enviando el token a la vista
     res.json({token})
 
+    // error
+    } catch (error) {
+        console.log(error);
+    }
 
 }
 

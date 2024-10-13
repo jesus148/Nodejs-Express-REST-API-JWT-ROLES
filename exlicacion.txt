@@ -133,3 +133,10 @@ C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_company\
          npm run dev
      se creara la bd auto 
   > ojo : si sale error solo instalar babel.    
+
+
+
+9. modulos que puedes usar con express para las validaciones 
+  express validator
+  npm joi
+

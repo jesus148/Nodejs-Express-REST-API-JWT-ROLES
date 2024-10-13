@@ -9,6 +9,10 @@
 // // exportando
 // export {verifyToken}
 
-// exportando todo 
+// importando todo 
 import * as authjwt from "./authjwt";
-export {authjwt }
+import * as verifySignUp from './verifySignUp';
+
+
+// exportas
+export {authjwt , verifySignUp}

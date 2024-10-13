@@ -1,5 +1,6 @@
 
 
-export const getUser = async (req , res) => {
-    return res.json('user create')
+export const CreateUser = async (req , res) => {
+
+    
 }

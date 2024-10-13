@@ -9,11 +9,11 @@ import pkg from '../package.json'; //get data package.json
 import  productsRouter  from './routes/products.routes';
 import authCtrl from './routes/auth.routes';
 import {createRoles} from './libs/initialSetup';
-
+import userRoutes from './routes/user.routes';
 
 // create app
 const app = express();
-
+    
 
 // metodo crea los roles auto al inciar la app
 createRoles();
@@ -57,6 +57,9 @@ app.use( '/api/products', productsRouter)
 // router user
 app.use( '/api/auth', authCtrl)
 
+
+// router users crea solo el admin
+app.use('/api/users' , userRoutes)
 
 
 

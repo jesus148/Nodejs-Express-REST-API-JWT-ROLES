@@ -4,12 +4,14 @@
 
 import {  Router} from 'express';
 import * as authCtrl  from '../controllers/auth.controller';
-
+import User from '../models/User';
+import {verifySignUp} from '../middlewares';
 
 
 const router = Router()
 
-// router para los usuarios
+// router crear para los usuarios
+// es parecido al User.routes.js solo q este este crea usuarios no ese nesecario ser admin cualquier rol lo puede hacer
 
 
 
@@ -25,7 +27,8 @@ const router = Router()
 //     "roles":["admin","moderator"]
 // }
 // headers > Content-Type >application/json
-router.post('/signup' , authCtrl.singUp );
+// lleva midlewares 
+router.post('/signup' , [verifySignUp.checkDuplicatedUsernameOrEmail , verifySignUp.checkRolesExisted],authCtrl.singUp );
 
 
 

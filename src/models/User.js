@@ -6,6 +6,8 @@ import {Schema , model} from 'mongoose';
 
 // crea la instancia
 const userSchema =new Schema({
+        // creara un id por defecto
+    // luego crea estos campos
     username:{
         type:String, //string tipo de dato
         unique:true // valor unico

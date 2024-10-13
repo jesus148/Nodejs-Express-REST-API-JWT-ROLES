@@ -7,7 +7,7 @@ import {  Router} from 'express';
 // imporamops todos los metodos del controller
 import * as productoAll from '../controllers/products.controller';
 import {authjwt} from '../middlewares';
-import middlewareWrapper from 'cors';
+
 
 const router = Router()
 
