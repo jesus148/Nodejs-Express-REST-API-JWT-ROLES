@@ -8,7 +8,7 @@ import Role from '../models/Role';
 export const createRoles = async()=>{
 // ok
 try{ 
-    // contando los objetos creados role
+    // contando los objetos creados role si existen 
     const count = await Role.estimatedDocumentCount();
 
     // // si hay se queda aqui

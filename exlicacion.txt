@@ -48,8 +48,14 @@ PS C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_compa
    > src    --crear
      > controllers 
         products.controller.js 
+        auth.controller.js
+        user.controller.js
      >libs 
+       initialSetup.js
      >middlewares 
+       authjwt.js
+       index.js
+       verifySignUp.js
      >models 
         products.js 
         Role.js 
@@ -69,6 +75,8 @@ PS C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_compa
 4. configurando babel 
     .babelrc   > crea un file 
        este file indica q preset estamos usando o utilizando que es lo que va traducir babel
+       esto no se usa en ninguna parte del codigo del proyecto, pero es nesecario para arrancar el proyecto al hacer > npm run dev 
+       debe estar siempre en el directorio raiz del proyecto
 
 
 5. creacion de comandos personalizados  en packege.json 

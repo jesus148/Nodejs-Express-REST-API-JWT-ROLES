@@ -18,6 +18,8 @@ const app = express();
 // metodo crea los roles auto al inciar la app
 createRoles();
 
+
+
 // para setear variables , osea una variable y le pones un valor 
 // package.json
 app.set('pkg', pkg)
@@ -37,7 +39,7 @@ app.use(express.json());
 
 
 // metodo rest get
-// http://localhost:400/  ---get
+// http://localhost:4000/ ---get
 app.get('/' , (req, res)=>{
     res.json({
         // app.set('pkg', pkg) : se usa para mostrar en la vista la data del package
@@ -66,5 +68,5 @@ app.use('/api/users' , userRoutes)
 
 
 
-// exportando pa q lo use en el indexe.js 
+// exportando pa q lo use en el index.js 
 export default app;

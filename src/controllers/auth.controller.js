@@ -94,6 +94,7 @@ export  const signini = async (req , res)=>{
     if(!user) return res.status(400).json({message:"User not found"})
 
         // verifica el password
+        // req.body.password : contraseña en plano
     const matchPassword = await User.comparePassword(req.body.password , user.password)    
 
     // si no es = el password

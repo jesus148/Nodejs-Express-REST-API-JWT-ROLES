@@ -28,7 +28,10 @@ const router = Router()
 // }
 // headers > Content-Type >application/json
 // lleva midlewares 
-router.post('/signup' , [verifySignUp.checkDuplicatedUsernameOrEmail , verifySignUp.checkRolesExisted],authCtrl.singUp );
+router.post('/signup' , [verifySignUp.checkDuplicatedUsernameOrEmail , verifySignUp.checkRolesExisted ] , authCtrl.singUp );
+
+
+
 
 
 
@@ -49,7 +52,7 @@ export default router;
 
 
 
-
+// creando un user simple  con rol user
 // http://localhost:4000/api/auth/signup   ---post
 // creando un user simple  con rol user
 // {

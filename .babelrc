@@ -1,6 +1,10 @@
 
 // este codigo es para usar el js + actual y , que sea compatible con las versiones antiguas .js en los browsers
 // Este código que compartiste es un archivo de configuración de Babel (normalmente llamado .babelrc o babel.config.json), que se utiliza para especificar los presets y plugins que Babel usará para transpilar tu código.
+// El archivo de configuración de Babel (como el código que compartiste) no se coloca directamente en tu archivo app.js, sino que es un archivo independiente que Babel utiliza para transpilar tu código JavaScript moderno a una versión compatible con navegadores más antiguos.
+
+// Normalmente, este archivo se llama .babelrc o babel.config.json, y debe estar en el directorio raíz de tu proyecto. Babel lee este archivo para aplicar las configuraciones al momento de la compilación.
+
 
 {
     "presets": [

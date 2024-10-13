@@ -49,10 +49,13 @@ userSchema.statics.ecncryptPassword = async (password) =>{
     return await bcrypt.hash(password,salt);
 }
 
+
+
 // compararar las contraseñas
 userSchema.statics.comparePassword = async(password , receivePassword)=>{
 
     // retorna un true o false
+    // password es del request esta en formato plano entonces lo encripta con la contraseña encriptada en la bd q es receivePassword
     return await bcrypt.compare(password , receivePassword);
 }
 
