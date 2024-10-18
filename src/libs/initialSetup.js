@@ -1,5 +1,7 @@
 
+import { ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_USERNAME } from '../config';
 import Role from '../models/Role';
+import User from '../models/User';
 
 // este metodo se ejecuta automatico al inicar la app 
 
@@ -27,3 +29,36 @@ try{
     console.log(err);
 }
 }
+
+
+// creare los admin solo 1
+export const createAdmin = async ()=>{
+
+    // busca el admin si existe
+    const userFound = await User.findOne({email : ADMIN_EMAIL});
+    // printer
+    console.log(userFound);
+
+    // finaliza
+    if(userFound) return;
+
+    // busca los roles admin y moderator
+    const roles = await Role.find({ name : {$in : ["admin", "moderator"]}})
+
+    // creamos el usuario
+    const newUser = await User.create({
+        username: ADMIN_USERNAME,
+        email:ADMIN_EMAIL,
+        password:ADMIN_PASSWORD,
+        roles: roles.map( (role =>{ role._id}))
+    })
+
+    // printer
+    console.log(`new user created : ${newUser.email} `)
+
+}
+
+// createRoles();
+// createAdmin();
+
+

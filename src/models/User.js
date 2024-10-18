@@ -25,6 +25,7 @@ const userSchema =new Schema({
     // cada objeto va tener una relacion
     // ref: referencia o relacionado con otro modelo de datos(en este caso el modelo usario relacionado con roles)
     roles:[{
+        // debe recibir un array de roles obligatorio
         ref:"Role",//hace referencia a Role.js
         // tipo de dato debe ser un id del Role.js
         type:Schema.Types.ObjectId  //de ese Role.js sera de tipo de dato el id de la collecion , lo q guarda es un id

@@ -11,6 +11,18 @@ export const CreateUser = async (req , res) => {
         // desestructurando
         const {username , email , password , roles} = req.body;
 
+
+        // verificando el usuario existe 
+        const searchUser = await User.findOne({username:username})
+        if(searchUser){
+            // retorna al cliente
+            return res.status(400).json({
+                msg:`ya existe el usuario con el nombre ${username}`
+            })
+        }
+
+
+
         // buscando y encontrando los roles 
         // $in :roles :  son los name roles de los usuarios
         // rolesfound se guarda roles 1 o varios

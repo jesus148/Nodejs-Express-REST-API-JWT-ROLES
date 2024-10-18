@@ -11,19 +11,21 @@ import Role from '../models/Role';
 
 export const verifyToken = async ( req , res , next) =>{
 
+
+
     // todo ok 
-    try {
+
             // en la cabezera deberas poner el token
     // x-acces-token : con esa estructura
     const token = req.headers["x-acces-token"]
 
-    // print console<
-    console.log(token)
+
 
     // si no existe el token 
     if(!token) return res.status(403).json({message:"no token provider"})
 
 
+    try{     
     // verificando el token del cliente con la firma q fue creada ese token
     // recordar q el token tiene el id agregado de un usuario
     // verifica el tiempo o expiracion 
@@ -56,28 +58,32 @@ export const verifyToken = async ( req , res , next) =>{
 // verifica si es moderador
 export const isModerator = async (req , res , next) =>{
 
-    // el req del metodo verifyToken tiene el id lo usaremos aqui
-    // y buscamos todo del usuario de ese id se agrega en la const
-    const user = await User.findById(req.userId)
 
-    // {$in : user.roles : busca los id roles incluidos del user en el role
-    // user.roles : el id del rol de ese usuario 
-    // osea busca los roles de ese usuario 
-    // roles en la consta se agrega 1 rol o varios como un array
-    const roles = await Role.find({_id :{$in : user.roles}}) 
-
-    // si cuenta con roles hace un for
-    for(let i = 0; i < roles.length ; i++){
-        // verifica si es moderador
-        if(roles[i].name === "moderator"){
-                next(); //pasa 
-                return; //y destruye
+    try {
+        // el req del metodo verifyToken tiene el id lo usaremos aqui
+        // y buscamos todo del usuario de ese id se agrega en la const
+        const user = await User.findById(req.userId)
+    
+        // {$in : user.roles : busca los id roles incluidos del user en el role
+        // user.roles : el id del rol de ese usuario 
+        // osea busca los roles de ese usuario 
+        // roles en la consta se agrega 1 rol o varios como un array
+        const roles = await Role.find({_id :{$in : user.roles}}) 
+    
+        // si cuenta con roles hace un for
+        for(let i = 0; i < roles.length ; i++){
+            // verifica si es moderador
+            if(roles[i].name === "moderator"){
+                    next(); //pasa 
+                    return; //y destruye
+            }
         }
+        
+        // devuuelve al front si no encuetra roles moderador
+        return res.status(403).json({message : "Requiere role de moderador"})
+    } catch (error) {
+        return res.status(500).send({message:error})
     }
-
-
-    // devuuelve al front si no encuetra roles moderador
-    return res.status(403).json({message : "Requiere role de moderador"})
 
 }
 
@@ -87,8 +93,9 @@ export const isModerator = async (req , res , next) =>{
 // verifica si admin 
 export const isAdmin = async (req , res , next) =>{
 
-    
-    // el req del metodo verifyToken tiene el id lo usaremos aqui
+    // todo ok
+    try {
+            // el req del metodo verifyToken tiene el id lo usaremos aqui
     // y buscamos todo del usuario de ese id se agrega en la const
     const user = await User.findById(req.userId)
 
@@ -106,9 +113,14 @@ export const isAdmin = async (req , res , next) =>{
                 return; //y destruye
         }
     }
-
-
     // devuuelve al front si no encuetra roles admin
     return res.status(403).json({message : "Requiere role de administrador"})
+
+    // error
+    } catch (error) {
+        return res.status(500).send({message: error})
+    }
+    
+
 
 }

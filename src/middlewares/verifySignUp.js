@@ -52,6 +52,7 @@ export const checkRolesExisted=(req , res , next)=>{
 
 
  
+        // verificando si esos roles existen para insertar en la bd
         // haciendo un for a los roles
         // haciendo un for a los roles del request
         for(let i=0; i < req.body.roles.length ; i++){
