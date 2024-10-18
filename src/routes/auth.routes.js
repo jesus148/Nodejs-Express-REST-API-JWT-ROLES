@@ -21,10 +21,10 @@ const router = Router()
 // usuario con roles 
 // http://localhost:4000/api/auth/signup   ---post
 // {
-//     "username":"jesus3",
-//     "email":"jesu3.com",
-//     "password":"jesus3",
-//     "roles":["admin","moderator"]
+    // "username":"jesus3",
+    // "email":"jesu3.com",
+    // "password":"jesus3",
+    // "roles":["admin","moderator"]
 // }
 // headers > Content-Type >application/json
 // lleva midlewares 
