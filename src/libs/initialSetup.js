@@ -17,12 +17,13 @@ try{
     if(count > 0) return;
 
     // creacion de roles auto , todo en uno 
+    // promisea.all: El Promise.all() El método devuelve una única promesa de una lista de promesas. cuando todas las promesas se cumplan. , osea dentro de 1 promesa se ejecutan varias promesas
     const values = await Promise.all([
         new Role({name:'user'}).save(),
         new Role({name:'moderator'}).save(),
         new Role({name:'admin'}).save()
     ])
-    
+
     // error
 }catch(err){
     // print dev

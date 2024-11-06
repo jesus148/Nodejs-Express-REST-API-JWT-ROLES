@@ -15,6 +15,21 @@ const router = Router()
 
 
 
+router.use((req, res, next) => {
+    // Access-Control-Allow-Headers: Define qué encabezados personalizados pueden ser enviados por el cliente en las solicitudes.
+    // x-access-token: Un encabezado personalizado, generalmente usado para enviar un token de autenticación.  
+    // Origin: Encabezado que especifica la fuente del documento que hace la solicitud.
+    // Content-Type: Especifica el tipo de contenido (por ejemplo, application/json).
+    // Accept: Indica los tipos de contenido que el cliente puede procesar.
+    res.header(
+      "Access-Control-Allow-Headers",
+      "x-access-token, Origin, Content-Type, Accept"
+    );
+    next();
+  });
+  
+
+
 
 
 // metodo crear

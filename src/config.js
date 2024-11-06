@@ -10,6 +10,7 @@ config();
 
 
 // ruta de la bd
+// process.env : para q puedeas usar en todo tu proyecto
 export const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost/companydb";
 

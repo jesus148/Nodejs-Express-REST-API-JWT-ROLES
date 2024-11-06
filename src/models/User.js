@@ -9,9 +9,9 @@ const userSchema =new Schema({
         // creara un id por defecto
     // luego crea estos campos
     username:{
-        type:String, //string tipo de dato
-        unique:true // valor unico
-    },
+            type:String, //string tipo de dato
+            unique:true // valor unico
+        },
     email:{
         type:String,
         unique:true
@@ -59,6 +59,9 @@ userSchema.statics.comparePassword = async(password , receivePassword)=>{
     // password es del request esta en formato plano entonces lo encripta con la contraseña encriptada en la bd q es receivePassword
     return await bcrypt.compare(password , receivePassword);
 }
+
+
+
 
 
 

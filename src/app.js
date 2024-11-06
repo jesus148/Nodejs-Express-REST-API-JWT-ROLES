@@ -19,11 +19,6 @@ import userRoutes from './routes/user.routes';
 const app = express();
     
 
-// metodo crea los roles auto al inciar la app
-// createRoles();
-// createAdmin();
-
-
 
 // para setear variables , osea una variable y le pones un valor 
 // package.json
@@ -39,6 +34,7 @@ app.set('json spaces', 4)
 
 // cualquiere peticion rest lo captura y lo muestra
 // dev : info del rest
+// helmet:para confidencialidad , en caso te olvides de valida algo lo completa
 app.use(helmet());
 app.use(morgan('dev'))
 
