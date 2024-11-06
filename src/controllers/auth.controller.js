@@ -46,7 +46,7 @@ export  const singUp = async (req , res)=>{
 
 
     // registrando
-    // savedUser se guarda todo el objeto registrado
+    // savedUser se guarda todo el objeto registrado , devuelve el objeto registrado
     const savedUser = await newUser.save();
     console.log(savedUser);
 
@@ -88,7 +88,6 @@ export  const signini = async (req , res)=>{
     // populate("roles") : trae todo el array de roles de ese usuario encontrado
     const user = await User.findOne({email : req.body.email}).populate("roles");
 
-    console.log(user);
 
     // verifica si el usuario existe
     if(!user) return res.status(400).json({message:"User not found"})

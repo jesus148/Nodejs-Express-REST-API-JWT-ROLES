@@ -8,7 +8,6 @@ import Role from '../models/Role';
 // metodo validar el token 
 // este metodo se usa en solo ciertos rest x ejemplo el delete , post , y el put 
 // el resto no es nesecario depende de cada developer
-
 export const verifyToken = async ( req , res , next) =>{
 
 
@@ -39,7 +38,7 @@ export const verifyToken = async ( req , res , next) =>{
         // {password:0} : cuando encuentre x el id el password no debe ser devuelto osea lo excluye
     const user = await User.findById(req.userId, {password:0})
 
-     // verifica el id si existe en la bd
+     // verifica el id si existe en la bd o el usuario
     if(!user) return res.status(404).json({message :'no user found'})
 
     // continua con la sgt ruta o metodo

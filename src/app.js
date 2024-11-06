@@ -7,18 +7,21 @@ import express from 'express';
 import morgan from 'morgan'; //info del rest
 import helmet from 'helmet';
 import pkg from '../package.json'; //get data package.json
+
+//routes
 import  productsRouter  from './routes/products.routes';
 import authCtrl from './routes/auth.routes';
-import {createRoles , createAdmin} from './libs/initialSetup';
+// import {createRoles , createAdmin} from './libs/initialSetup';
 import userRoutes from './routes/user.routes';
+
 
 // create app
 const app = express();
     
 
 // metodo crea los roles auto al inciar la app
-createRoles();
-createAdmin();
+// createRoles();
+// createAdmin();
 
 
 
@@ -26,6 +29,9 @@ createAdmin();
 // package.json
 app.set('pkg', pkg)
 app.set('port',process.env.PORT || 4000)
+// "json spaces"
+// las respuestas sean más fáciles de leer cuando se visualizan en una herramienta de depuración o en el navegador.
+app.set('json spaces', 4)
 
 
 
@@ -40,6 +46,12 @@ app.use(morgan('dev'))
 
 // data en json del front a la back 
 app.use(express.json());
+// express.urlencoded
+// // datos del front a traves de formularios
+// Cuando una solicitud HTTP envía datos en un formato de formulario (como al usar un <form> en HTML con el método POST), este middleware permite a Express analizar esos datos y añadirlos al objeto req.body para que puedas acceder a ellos fácilmente en tus rutas. 
+// extended: false: Adecuado para formularios simples.
+// extended: true: Permite datos más complejos en formularios (útil si necesitas recibir arrays u objetos en el formulario).
+app.use(express.urlencoded({extended:false}))
 
 
 // metodo rest get

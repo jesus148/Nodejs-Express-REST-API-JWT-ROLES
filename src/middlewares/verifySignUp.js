@@ -14,7 +14,7 @@ import User from '../models/User'
 export const checkDuplicatedUsernameOrEmail = async(req, res, next)=>{
 
     try {
-        // verificando q el user no se repita
+        // verificando q el user no se repita   
         // req.body.username: obtteniendo del request
         const user = await User.findOne({username : req.body.username})
         if(user) return res.status(400).json({
@@ -47,7 +47,7 @@ export const checkRolesExisted=(req , res , next)=>{
 
 
 
-    // verifiando si el request del cliente tiene roles 
+    // verifiando si el request del cliente not tiene roles 
     if(!req.body.roles) return res.status(400).json({message:"no roles"})
 
 

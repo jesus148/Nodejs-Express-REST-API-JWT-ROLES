@@ -4,6 +4,7 @@
 
 import app from './app';
 import   './database';
+import './libs/initialSetup.js'
 import {PORT} from './config.js'
 
 // puerto

@@ -101,8 +101,8 @@ PS C:\Users\jesus\Desktop\JESUS\EXPRESS_PROYECTOS\2_ejercisio\products_api_compa
   -- comando para contruir
   "scripts": {
     "build":"babel src --out-dir build",   ---- contruye codgio de js moderno a js antiguo y compatible , crea el build dist y eso 
-                                                solo se ejecuta esto
-    "dev": "nodemon src/index.js --exec babel-node",
+                                               
+    "dev": "nodemon src/index.js --exec babel-node",   ----- solo se ejecuta esto
     "start": "node src/index.js"  ---ejecuta entorno de produccion
   },
 

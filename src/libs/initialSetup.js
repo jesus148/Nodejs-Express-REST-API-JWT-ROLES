@@ -31,26 +31,31 @@ try{
 }
 
 
+
 // creare los admin solo 1
 export const createAdmin = async ()=>{
 
     // busca el admin si existe
     const userFound = await User.findOne({email : ADMIN_EMAIL});
     // printer
-    console.log(userFound);
+    //  console.log(userFound);
 
     // finaliza
     if(userFound) return;
 
     // busca los roles admin y moderator
+    // $in : si esta ingresado
     const roles = await Role.find({ name : {$in : ["admin", "moderator"]}})
+
 
     // creamos el usuario
     const newUser = await User.create({
+        // asignamos sus valores
         username: ADMIN_USERNAME,
         email:ADMIN_EMAIL,
         password:ADMIN_PASSWORD,
-        roles: roles.map( (role =>{ role._id}))
+        // agregamos roles solo los id
+        roles: roles.map( (role => role._id))
     })
 
     // printer
@@ -58,7 +63,7 @@ export const createAdmin = async ()=>{
 
 }
 
-// createRoles();
-// createAdmin();
+createRoles();
+createAdmin();
 
 
