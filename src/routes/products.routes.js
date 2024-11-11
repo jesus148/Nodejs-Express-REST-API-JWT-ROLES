@@ -49,7 +49,7 @@ router.post('/' , [authjwt.verifyToken , authjwt.isModerator] ,productoAll.creat
 // obtener producto x id 
 // http://localhost:4000/products/66fcb2919ebd5e548fdcc969 ----get
 // 66fcb2919ebd5e548fdcc969 : id de la coleccion 
-router.get('/:productId' , productoAll.getProductsById)
+router.get('/:productId' , productoAll.getProductsById);
 
 
 

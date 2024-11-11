@@ -3,6 +3,8 @@
 import User from '../models/User.js';
 import Role from '../models/Role.js';
 
+
+// metodo crear el usuario solo lo crea el admin
 export const CreateUser = async (req , res) => {
     
     // todo ok

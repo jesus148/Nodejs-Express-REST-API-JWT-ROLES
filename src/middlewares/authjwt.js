@@ -19,7 +19,6 @@ export const verifyToken = async ( req , res , next) =>{
     const token = req.headers["x-acces-token"]
 
 
-
     // si no existe el token 
     if(!token) return res.status(403).json({message:"no token provider"})
 

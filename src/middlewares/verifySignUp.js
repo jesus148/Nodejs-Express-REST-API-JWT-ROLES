@@ -48,7 +48,7 @@ export const checkRolesExisted=(req , res , next)=>{
 
 
     // verifiando si el request del cliente not tiene roles 
-    if(!req.body.roles) return res.status(400).json({message:"no roles"})
+    if(!req.body.roles) return res.status(400).json({message:"no roles"});
 
 
  

@@ -71,6 +71,14 @@ export  const singUp = async (req , res)=>{
 
 
 
+// metodo actualizar 
+
+export const updateUser = async( req , res)=>{
+        const userUpdate= await User.findByIdAndUpdate(req.params.userId, req.body,{
+            new:true
+        });
+        res.status(200).json(userUpdate);
+}
 
 
 
@@ -81,7 +89,6 @@ export  const singUp = async (req , res)=>{
 
 // metodo ingresar
 export  const signini = async (req , res)=>{
-
     // todo ok
     try {
          // busca el objeto por el email del request

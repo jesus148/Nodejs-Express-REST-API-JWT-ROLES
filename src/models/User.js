@@ -11,7 +11,7 @@ const userSchema =new Schema({
     username:{
             type:String, //string tipo de dato
             unique:true // valor unico
-        },
+    },
     email:{
         type:String,
         unique:true
@@ -61,6 +61,24 @@ userSchema.statics.comparePassword = async(password , receivePassword)=>{
 }
 
 
+// se ejecutan antes de un midleware
+// save y otro metodos de registro
+// osea cuando la clase modelo user usa algun metodo osea escucha 
+userSchema.pre("save",async function(next){
+    
+    // la clase modelo aqui
+    const user= this;
+    
+    // verifica si no se cambio la contraseña , luego se da next
+    if(!user.isModified("password")){
+        return next();
+    }
+
+    // en caso cambio la contraseña se encripta 
+    const hash = await bcrypt.hash(user.password,10);
+    user.password = hash;
+    next();
+})
 
 
 

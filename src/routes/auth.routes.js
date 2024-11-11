@@ -61,6 +61,19 @@ router.post('/signin' , authCtrl.signini);
 
 
 
+
+
+
+
+
+// http://localhost:4000/api/auth/67322785183dbf3885c9a6ee 
+// metodo acutualizar usuario
+router.put('/:userId',[verifySignUp.checkDuplicatedUsernameOrEmail , verifySignUp.checkRolesExisted] , authCtrl.updateUser);
+
+
+
+
+
 // exportando
 export default router;
 
