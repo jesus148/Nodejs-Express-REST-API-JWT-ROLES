@@ -2,7 +2,7 @@
 
 // autenticacion 
 
-import {  Router} from 'express';
+import {Router} from 'express';
 import * as authCtrl  from '../controllers/auth.controller';
 import User from '../models/User';
 import {verifySignUp} from '../middlewares';
@@ -68,7 +68,7 @@ router.post('/signin' , authCtrl.signini);
 
 // http://localhost:4000/api/auth/67322785183dbf3885c9a6ee 
 // metodo acutualizar usuario
-router.put('/:userId',[verifySignUp.checkDuplicatedUsernameOrEmail , verifySignUp.checkRolesExisted] , authCtrl.updateUser);
+router.put('/:userId',[ verifySignUp.checkRolesExistedPut] , authCtrl.updateUser);
 
 
 

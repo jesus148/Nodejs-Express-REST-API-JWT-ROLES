@@ -69,3 +69,27 @@ export const checkRolesExisted=(req , res , next)=>{
     // si no tiene roles continua , en el metodo controller se agrega el x default
     next();
 }
+
+
+
+
+// verificando roles al hacer put
+// osea pueden o no venir roles 
+export const checkRolesExistedPut= (req , res , next)=>{
+    // recorrido array de roles 
+
+    // verificando si existe
+    if(req.body.roles){
+        for(let i=0 ; i < req.body.roles.length ; i++){
+            // verificand si existe
+            if(!ROLES.includes(req.body.roles[i])){
+                return res.status(404).json({
+                    message:`Role ${req.body.roles[i]} no existe`
+                })
+            }
+        }
+    }
+    
+    // si no hay roles igual continua
+    next();
+}

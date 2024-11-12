@@ -22,7 +22,10 @@ export  const singUp = async (req , res)=>{
         username,
         email,
         // ecncryptPassword : metodo en la clase guia lo encripta
-        password: await User.ecncryptPassword(password)
+        // password: await User.ecncryptPassword(password)
+
+        // por el momento usara el .pre en el User.js para encriptar
+        password
     })
 
 
@@ -71,13 +74,58 @@ export  const singUp = async (req , res)=>{
 
 
 
-// metodo actualizar 
 
+
+
+
+
+
+// metodo actualizar 
 export const updateUser = async( req , res)=>{
-        const userUpdate= await User.findByIdAndUpdate(req.params.userId, req.body,{
+    try {
+        const id= req.params.userId;
+
+                // destructurando el request
+    const {username, email, password , roles}= req.body;
+
+
+    // creando la instancia y completando datos
+    const newUser = new User({
+        username,
+        email,
+        password,
+
+    });
+
+
+        // verificando los roles si existe
+        if(roles){
+            // busca el rol del request en la bd y lo guarda en la const
+            // but guarda todo el objeto o un array en caso sea 2 roles 
+            const foundRoles = await Role.find({name : {$in : roles}})
+    
+            // del foundRoles solo quiero el id y lo agrega al objeto newUser
+            newUser.roles = foundRoles.map(role => role._id)
+    
+            // si no envia un rol
+        }else {
+            // busca el user y guarda el objeto en la const
+            const role = await Role.findOne({name :"user"})
+            // agrega al objeto newUser
+            newUser.roles = [role._id]
+        }
+
+
+        // const userUpdate= await User.findByIdAndUpdate(id, req.body,{
+        //     new:true
+        // });
+        const userUpdate= await User.findByIdAndUpdate(id, req.body,{
             new:true
         });
         res.status(200).json(userUpdate);
+    } catch (error) {
+        return res.status(500).json(error.message)
+    }
 }
 
 

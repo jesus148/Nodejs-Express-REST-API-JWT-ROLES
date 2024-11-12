@@ -12,7 +12,7 @@
 // importando todo 
 import * as authjwt from "./authjwt";
 import * as verifySignUp from './verifySignUp';
-import * as validateFied from './validateFied'
+import * as validateFied from './validateFied';
 
 
 // exportas

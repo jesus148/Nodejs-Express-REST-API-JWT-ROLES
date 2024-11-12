@@ -63,21 +63,34 @@ userSchema.statics.comparePassword = async(password , receivePassword)=>{
 
 // se ejecutan antes de un midleware
 // save y otro metodos de registro
-// osea cuando la clase modelo user usa algun metodo osea escucha 
+// osea cuando la clase modelo user usa algun metodo osea escucha ya sea al crear 
 userSchema.pre("save",async function(next){
     
+    console.log("test");
     // la clase modelo aqui
     const user= this;
     
     // verifica si no se cambio la contraseña , luego se da next
-    if(!user.isModified("password")){
-        return next();
-    }
+    // if(!user.isModified("password")){
+    //     return next();
+    // }
 
-    // en caso cambio la contraseña se encripta 
+    // // en caso cambio la contraseña se encripta 
+    // const hash = await bcrypt.hash(user.password,10);
+    // user.password = hash;
+    // next();
+
+    // veririficando si hay una modificacion en el password
+    // si se modifica aca lo encripta la contraseña 
+    // ojo : el password debes ponerlo vacion en el controller
+    if(user.isModified('password')){
     const hash = await bcrypt.hash(user.password,10);
     user.password = hash;
     next();
+    // si no hay pasa normal
+    }else{
+        next();
+    }
 })
 
 
